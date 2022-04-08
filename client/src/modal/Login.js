@@ -35,8 +35,7 @@ function Login({setLoginModal,handleSignupModal,handleCloseSignupModal}) {
 
   //비밀번호찾기 모달
   const openModalPWConfirm = () => {
-  setPWConfirmModal(!PWConfirmModal)
-  
+    setPWConfirmModal(!PWConfirmModal)
   }
 
   const handleInputValue = (key) => (e) => {

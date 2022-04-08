@@ -81,6 +81,16 @@ app.post('/orders/:contentId', controllers.order);
 app.delete('/orders/:contentId', controllers.cancelOrder);
 app.post('/users/checkId', controllers.checkId);
 app.post('/users/checkNickname', controllers.checkNickname);
+
+
+
+
+app.post('/mail', controllers.sendMail);
+
+
+
+
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });

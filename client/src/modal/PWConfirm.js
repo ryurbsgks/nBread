@@ -1,8 +1,37 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 
 function PWConfirm({openModalPWConfirm}) {
 
+  const [email, setEmail] = useState('');
+  const [randomCode, setRandomCode] = useState('');
+  const [checkRandomCode, setCheckRandomCode] = useState('');
+
+  const handleInputValue = (value) => (e) => {
+    if (value === 'email') {
+      setEmail(e.target.value);
+    }
+    if (value === 'randomCode') {
+      setCheckRandomCode(e.target.value);
+    }
+  };
+
+  const sendMail = () => {
+    axios.post(`${process.env.REACT_APP_API_URL}/mail`, {
+      email: email
+    }).then( (res) => {
+      if (res.data.message === '이메일 발송 성공') {
+        Swal.fire('이메일을 보냈습니다 확인하세요');
+        setRandomCode(res.data.data);
+      } else {
+        Swal.fire('이메일 발송이 실패했습니다 다시 확인해주세요');
+      }
+    }).catch( (err) => {
+      
+    });
+  };
 
   return (
     <>
@@ -16,10 +45,10 @@ function PWConfirm({openModalPWConfirm}) {
         <InputField placeholder="아이디"/>
         </InputFieldDiv>
         <InputFieldDiv>
-        <InputField placeholder="비밀번호"/>
+        <InputField onChange={handleInputValue('email')} type='email' placeholder="이메일"/>
         </InputFieldDiv>
-        <Button>조회하기</Button>
-        <InputField placeholder="문자로 간 코드를 입력해주세요."/>
+        <Button type='button' onClick={sendMail}>조회하기</Button>
+        <InputField onChange={handleInputValue('randomCode')} placeholder="이메일로 간 코드를 입력해주세요."/>
         <Button>확인</Button>
         <SignUpToLogin onClick={null}>로그인으로 돌아가기</SignUpToLogin>
       </LoginForm>

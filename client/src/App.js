@@ -7,13 +7,10 @@ import Main from './pages/Main';
 import MyPage from './pages/MyPage';
 import Comment from './component/Comment';
 import LoginUser from './component/LoginUser';
-import Chatting_test from './modal/Chatting_test';
 import ChattingDetail from './component/ChattingDetail';
 import ProfileImage from './component/ProfileImage';
-import Test from './modal/Test';
+import Mail from './modal/Mail';
 // import 'antd/dist/antd.css';
-
-
 
 function App() {
   return (
@@ -36,17 +33,14 @@ function App() {
         <Route path="/LoginUser">
           <LoginUser/>
         </Route>
-        <Route path="/test">
-          <Chatting_test/>
-        </Route>
         <Route path="/ChattingDetail">
           <ChattingDetail/>
         </Route>
         <Route path="/ProfileImage">
           <ProfileImage/>
         </Route>
-        <Route path="/chat">
-          <Test/>
+        <Route path="/mail">
+          <Mail/>
         </Route>
     </BrowserRouter>
   );

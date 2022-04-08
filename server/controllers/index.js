@@ -14,5 +14,6 @@ module.exports = {
   cancelOrder: require('./orders/cancel'),
   editMemberInformation: require('./users/editMemberInformation'),
   checkId: require('./users/checkId'),
-  checkNickname: require('./users/checkNickname')
+  checkNickname: require('./users/checkNickname'),
+  sendMail: require('./mail/sendMail')
 };
